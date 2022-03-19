@@ -1,0 +1,21 @@
+{
+  "name": "elm-opaque-dict",
+  "version": "0.1.0",
+  "scripts": {
+    "format": "elm-format ./src",
+    "format:validate": "elm-format --validate --yes ./src",
+    "review": "elm-review",
+    "review:fix": "elm-review --fix",
+    "test": "elm-test"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "elm-format": "^0.8.5",
+    "elm-review": "^2.7.0",
+    "elm-test": "^0.19.1-revision7"
+  },
+  "dependencies": {
+    "elm": "^0.19.1-5"
+  }
+}
+
