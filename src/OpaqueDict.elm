@@ -118,7 +118,7 @@ type alias OpaqueDict key b =
     }
 
 
-{-| Like Json.Decode.dict, decode a JSON object to an OpaqueDict.
+{-| Decode a JSON object to an OpaqueDict, analogous Json.Decode.dict.
 
     decodeString (decode animalGroupFromString animalGroupToString int) "{ \"feline\": 3, \"canine\": 5 }"
         == Ok (OpaqueDict.fromList animalGroupToString [ ( Feline, 3 ), ( Canine, 5 ) ])
@@ -197,7 +197,7 @@ decode stringToKey keyToString decoder =
             )
 
 
-{-| Turn an OpaqueDict into a JSON object.
+{-| Turn an OpaqueDict into a JSON object. Analogous to Json.Encode.dict.
 
     animalCounts : OpaqueDict AnimalGroup Int
     animalCounts =
