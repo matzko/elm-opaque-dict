@@ -526,12 +526,12 @@ suite =
                             merged : OpaqueDict AnimalGroup Int
                             merged =
                                 OpaqueDict.merge
-                                    (\key a -> OpaqueDict.insert key a)
-                                    (\key a b -> OpaqueDict.insert key (a + b))
-                                    (\key b -> OpaqueDict.insert key b)
+                                    (\key a -> insert key a)
+                                    (\key a b -> insert key (a + b))
+                                    (\key b -> insert key b)
                                     oneDict
                                     anotherDict
-                                    (OpaqueDict.empty animalGroupToString)
+                                    (empty animalGroupToString)
                         in
                         merged
                             |> toList

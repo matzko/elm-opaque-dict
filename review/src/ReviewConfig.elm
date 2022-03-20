@@ -159,7 +159,7 @@ config =
     , NoRedundantConcat.rule
     , NoRedundantCons.rule
     , NoSinglePatternCase.rule NoSinglePatternCase.fixInArgument
-    , NoTypeAliasConstructorCall.rule
+    , NoTypeAliasConstructorCall.rule |> Review.Rule.ignoreErrorsForDirectories [ "tests/" ]
     , NoUnmatchedUnit.rule |> Review.Rule.ignoreErrorsForDirectories [ "tests/" ]
     , NoUnused.CustomTypeConstructorArgs.rule |> Review.Rule.ignoreErrorsForDirectories [ "tests/" ]
     , NoUnused.CustomTypeConstructors.rule []

@@ -443,7 +443,6 @@ update key f ({ keyToString, dict } as opaque) =
                     val
                         |> Just
                         |> f
-                        |> Maybe.map identity
                         |> Maybe.withDefault val
                         |> Tuple.pair originalKey
                         |> Just
