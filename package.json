@@ -1,6 +1,6 @@
 {
   "name": "elm-opaque-dict",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "format": "elm-format ./src",
     "format:validate": "elm-format --validate --yes ./src",
@@ -15,7 +15,11 @@
     "elm-test": "^0.19.1-revision7"
   },
   "dependencies": {
-    "elm": "^0.19.1-5"
+    "elm": "^0.19.1-5",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.0",
+    "prettier-config-standard": "^5.0.0"
   }
 }
-
