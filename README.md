@@ -4,7 +4,7 @@ Make dictionaries in Elm with arbitrary types for the keys.
 
 ## Motivation
 
-Elm's `Dict` allows you to make dictionaries with keys that have to be restricted to comparable types (`Int`, `Float`, `Time`, `Char`, `String`, and tuples or lists of those).
+Elm's `Dict` allows you to make dictionaries with keys that have to be restricted to comparable types (`Int`, `Float`, `Char`, `String`, and tuples or lists of those).
 
 But often you might want to make a dictionary where the key type is an opaque type, not a primitive. For example:
 
