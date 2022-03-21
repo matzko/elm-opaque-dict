@@ -3,7 +3,7 @@
     "name": "matzko/elm-opaque-dict",
     "summary": "Dictionary supporting opaque Elm types as keys.",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "exposed-modules": [
         "OpaqueDict"
     ],
