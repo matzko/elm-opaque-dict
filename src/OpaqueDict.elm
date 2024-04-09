@@ -436,17 +436,10 @@ update : a -> (Maybe b -> Maybe b) -> OpaqueDict a b -> OpaqueDict a b
 update key f ({ keyToString, dict } as opaque) =
     let
         mapper : Maybe ( a, b ) -> Maybe ( a, b )
-        mapper maybeValue =
-            case maybeValue of
-                Just ( originalKey, val ) ->
-                    -- convoluted way of applying function (Maybe b -> Maybe b) to (Maybe (a, b))
-                    val
-                        |> Just
-                        |> f
-                        |> Maybe.map (Tuple.pair originalKey)
-
-                _ ->
-                    Nothing
+        mapper =
+            Maybe.map Tuple.second
+                >> f
+                >> Maybe.map (Tuple.pair key)
     in
     { opaque
         | dict =

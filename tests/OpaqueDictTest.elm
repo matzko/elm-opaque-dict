@@ -172,32 +172,60 @@ suite =
                     ]
                 ]
             , describe "when there is not a matching key"
-                [ test "it doesn't change the existing record" <|
-                    \() ->
-                        let
-                            transformer : Maybe String -> Maybe String
-                            transformer maybeName =
-                                maybeName
-                                    |> Maybe.map (\t -> t ++ "-Anne")
-                        in
-                        [ ( UserId 3, "Bob" ) ]
-                            |> fromList userIdToString
-                            |> update (UserId 2) transformer
-                            |> get (UserId 3)
-                            |> Expect.equal (Just "Bob")
-                , test "it doesn't change the number of items" <|
-                    \() ->
-                        let
-                            transformer : Maybe String -> Maybe String
-                            transformer maybeName =
-                                maybeName
-                                    |> Maybe.map (\t -> t ++ "-Anne")
-                        in
-                        [ ( UserId 3, "Bob" ) ]
-                            |> fromList userIdToString
-                            |> update (UserId 2) transformer
-                            |> size
-                            |> Expect.equal 1
+                [ describe "when the mapper returns nothing"
+                    [ test "it doesn't change the existing record" <|
+                        \() ->
+                            let
+                                transformer : Maybe String -> Maybe String
+                                transformer maybeName =
+                                    maybeName
+                                        |> Maybe.map (\t -> t ++ "-Anne")
+                            in
+                            [ ( UserId 3, "Bob" ) ]
+                                |> fromList userIdToString
+                                |> update (UserId 2) transformer
+                                |> get (UserId 3)
+                                |> Expect.equal (Just "Bob")
+                    , test "it doesn't change the number of items" <|
+                        \() ->
+                            let
+                                transformer : Maybe String -> Maybe String
+                                transformer maybeName =
+                                    maybeName
+                                        |> Maybe.map (\t -> t ++ "-Anne")
+                            in
+                            [ ( UserId 3, "Bob" ) ]
+                                |> fromList userIdToString
+                                |> update (UserId 2) transformer
+                                |> size
+                                |> Expect.equal 1
+                    ]
+                , describe "when the mapper returns something even when the key doesn't exist"
+                    [ test "it creates a new record" <|
+                        \() ->
+                            let
+                                transformer : Maybe String -> Maybe String
+                                transformer =
+                                    always (Just "Anne")
+                            in
+                            [ ( UserId 3, "Bob" ) ]
+                                |> fromList userIdToString
+                                |> update (UserId 2) transformer
+                                |> get (UserId 2)
+                                |> Expect.equal (Just "Anne")
+                    , test "it increases the number of items" <|
+                        \() ->
+                            let
+                                transformer : Maybe String -> Maybe String
+                                transformer =
+                                    always (Just "Anne")
+                            in
+                            [ ( UserId 3, "Bob" ) ]
+                                |> fromList userIdToString
+                                |> update (UserId 2) transformer
+                                |> size
+                                |> Expect.equal 2
+                    ]
                 ]
             ]
         , describe "remove: Remove a value from the dictionary."
