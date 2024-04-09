@@ -443,9 +443,7 @@ update key f ({ keyToString, dict } as opaque) =
                     val
                         |> Just
                         |> f
-                        |> Maybe.withDefault val
-                        |> Tuple.pair originalKey
-                        |> Just
+                        |> Maybe.map (Tuple.pair originalKey)
 
                 _ ->
                     Nothing

@@ -141,21 +141,37 @@ suite =
             ]
         , describe "update: Update the value."
             [ describe "when there is a matching key"
-                [ test "it changes the value" <|
-                    \() ->
-                        let
-                            transformer : Maybe String -> Maybe String
-                            transformer maybeName =
-                                maybeName
-                                    |> Maybe.map (\t -> t ++ "-Anne")
-                        in
-                        [ ( UserId 2, "Mary" ) ]
-                            |> fromList userIdToString
-                            |> update (UserId 2) transformer
-                            |> get (UserId 2)
-                            |> Expect.equal (Just "Mary-Anne")
+                [ describe "when the value is changed"
+                    [ test "it changes the value" <|
+                        \() ->
+                            let
+                                transformer : Maybe String -> Maybe String
+                                transformer maybeName =
+                                    maybeName
+                                        |> Maybe.map (\t -> t ++ "-Anne")
+                            in
+                            [ ( UserId 2, "Mary" ) ]
+                                |> fromList userIdToString
+                                |> update (UserId 2) transformer
+                                |> get (UserId 2)
+                                |> Expect.equal (Just "Mary-Anne")
+                    ]
+                , describe "when the mapper returns nothing"
+                    [ test "it removes the value" <|
+                        \() ->
+                            let
+                                transformer : Maybe String -> Maybe String
+                                transformer =
+                                    always Nothing
+                            in
+                            [ ( UserId 2, "Mary" ) ]
+                                |> fromList userIdToString
+                                |> update (UserId 2) transformer
+                                |> get (UserId 2)
+                                |> Expect.equal Nothing
+                    ]
                 ]
-            , describe "when there is not a mathing key"
+            , describe "when there is not a matching key"
                 [ test "it doesn't change the existing record" <|
                     \() ->
                         let
