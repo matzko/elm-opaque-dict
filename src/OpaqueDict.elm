@@ -548,5 +548,5 @@ fromList keyToString list =
 {-| Determine the number of key-value pairs in the dictionary.
 -}
 size : OpaqueDict key val -> Int
-size =
-    toList >> List.length
+size { dict } =
+    dict |> Dict.size

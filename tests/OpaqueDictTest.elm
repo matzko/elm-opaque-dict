@@ -275,6 +275,14 @@ suite =
                             |> size
                             |> Expect.equal 0
                 ]
+            , describe "when there are multiple items"
+                [ test "it returns 1" <|
+                    \() ->
+                        [ ( UserId 2, "Mary" ), ( UserId 3, "Bob" ), ( UserId 5, "Sue" ), ( UserId 8, "Omar" ) ]
+                            |> fromList userIdToString
+                            |> size
+                            |> Expect.equal 4
+                ]
             ]
         , describe "keys: Get the keys, ordered."
             [ test "it returns the keys" <|
