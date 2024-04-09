@@ -1,6 +1,6 @@
 {
   "name": "elm-opaque-dict",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "scripts": {
     "format": "elm-format ./src ./tests",
     "format:validate": "elm-format --validate --yes ./src",

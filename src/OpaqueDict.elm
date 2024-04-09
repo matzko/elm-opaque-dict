@@ -24,6 +24,7 @@ module OpaqueDict exposing
     , merge
     , decode
     , encode
+    , majorVersionCompatible
     )
 
 {-| A dictionary mapping unique keys to values. The keys can be any type that can be transformed to a String.
@@ -76,6 +77,7 @@ module OpaqueDict exposing
 
 @docs decode
 @docs encode
+@docs majorVersionCompatible
 
 -}
 
@@ -541,3 +543,10 @@ fromList keyToString list =
 size : OpaqueDict key val -> Int
 size { dict } =
     dict |> Dict.size
+
+
+{-| Whether this package is compatible with given major version of the package. Really meant as a way to indicate—and force the Elm package system to recognize—a major, breaking change even when there is no change to the API.
+-}
+majorVersionCompatible : { major1 : Bool }
+majorVersionCompatible =
+    { major1 = False }
