@@ -2,7 +2,7 @@
   "name": "elm-opaque-dict",
   "version": "1.0.1",
   "scripts": {
-    "format": "elm-format ./src",
+    "format": "elm-format ./src ./tests",
     "format:validate": "elm-format --validate --yes ./src",
     "review": "elm-review",
     "review:fix": "elm-review --fix",
