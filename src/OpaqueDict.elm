@@ -547,6 +547,6 @@ size { dict } =
 
 {-| Whether this package is compatible with given major version of the package. Really meant as a way to indicate—and force the Elm package system to recognize—a major, breaking change even when there is no change to the API.
 -}
-majorVersionCompatible : { major1 : Bool }
+majorVersionCompatible : { major1 : Bool, major2 : Bool }
 majorVersionCompatible =
-    { major1 = False }
+    { major1 = False, major2 = True }
