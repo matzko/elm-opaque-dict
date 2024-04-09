@@ -39,7 +39,6 @@ import NoRecursiveUpdate
 import NoRedundantConcat
 import NoRedundantCons
 import NoSinglePatternCase
-import NoTypeAliasConstructorCall
 import NoUnmatchedUnit
 import NoUnoptimizedRecursion
 import NoUnused.CustomTypeConstructorArgs
@@ -159,7 +158,6 @@ config =
     , NoRedundantConcat.rule
     , NoRedundantCons.rule
     , NoSinglePatternCase.rule NoSinglePatternCase.fixInArgument
-    , NoTypeAliasConstructorCall.rule |> Review.Rule.ignoreErrorsForDirectories [ "tests/" ]
     , NoUnmatchedUnit.rule |> Review.Rule.ignoreErrorsForDirectories [ "tests/" ]
     , NoUnused.CustomTypeConstructorArgs.rule |> Review.Rule.ignoreErrorsForDirectories [ "tests/" ]
     , NoUnused.CustomTypeConstructors.rule []
